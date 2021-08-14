@@ -1,5 +1,7 @@
 import bodyParser from "body-parser";
 import { randomBytes } from "crypto";
+import cors from "cors";
+
 import express from "express";
 
 import { Post } from "./types";
@@ -8,6 +10,7 @@ const PORT_NUMBER = 4000;
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 
 const posts: Post = {};
 

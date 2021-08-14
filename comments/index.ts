@@ -1,12 +1,14 @@
 import bodyParser from "body-parser";
 import { randomBytes } from "crypto";
 import express from "express";
+import cors from "cors";
 import { CommentsByPostId } from "./types";
 
 const PORT_NUMBER = 4001;
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 
 const commentsByPostId: CommentsByPostId = {};
 

@@ -5,6 +5,7 @@ import cors from "cors";
 import express from "express";
 
 import { Post } from "./types";
+import axios from "axios";
 
 const PORT_NUMBER = 4000;
 
@@ -29,9 +30,22 @@ app.post("/posts", async (req, res) => {
 
   posts[id] = { id, title };
 
+  await axios.post("http://localhost:4005/events", {
+    type: "POST_CREATED",
+    data: { id, title },
+  });
+
   console.log(id);
 
-  res.send(posts[id]);
+  res.status(201).send(posts[id]);
+});
+
+app.post("/events", async (req, res) => {
+  const event = req.body;
+
+  console.log(event.type);
+
+  res.send({ status: "OK" });
 });
 
 app.listen(PORT_NUMBER, () => {

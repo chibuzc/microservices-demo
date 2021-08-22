@@ -3,6 +3,7 @@ import { randomBytes } from "crypto";
 import express from "express";
 import cors from "cors";
 import { CommentsByPostId } from "./types";
+import axios from "axios";
 
 const PORT_NUMBER = 4001;
 
@@ -34,7 +35,20 @@ app.post("/posts/:id/comments", async (req, res) => {
 
   commentsByPostId[postID] = comments;
 
+  await axios.post("http://localhost:4005/events", {
+    type: "COMMENT_CREATED",
+    data: { id: commentId, content, postID },
+  });
+
   res.status(201).send(comments);
+});
+
+app.post("/events", async (req, res) => {
+  const event = req.body;
+
+  console.log(event.type);
+
+  res.send({ status: "OK" });
 });
 
 app.listen(PORT_NUMBER, () => {

@@ -1,7 +1,6 @@
 import React from "react";
 
 const CommentList = ({ comments }) => {
-  console.log(comments);
 
   const renderedContents = comments.map((comment) => {
     return <li key={comment.id}>{comment.content}</li>;

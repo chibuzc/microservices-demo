@@ -11,6 +11,7 @@ export interface QueryServicePostMap {
 export interface QueryServiceComment {
   id: string;
   content: string;
+  status: "pending" | "approved" | "rejected";
 }
 
 export interface QueryServiceCommentMap {

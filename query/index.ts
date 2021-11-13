@@ -25,9 +25,9 @@ app.post("/events", async (req, res) => {
     posts[id] = { ...data, comments: [] };
   }
   if (type === "COMMENT_CREATED") {
-    const { id, content, postID } = data;
+    const { id, content, postID, status } = data;
 
-    posts[postID].comments.push({ id, content });
+    posts[postID].comments.push({ id, content, status });
   }
   console.log(JSON.stringify(posts));
   res.status(200).send(posts);

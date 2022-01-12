@@ -16,7 +16,7 @@ app.use(cors());
 const posts: Post = {};
 
 app.get("/posts", (req, res) => {
-  console.log(`getting all posts`);
+  console.log(`fetching all posts`);
   res.send(posts);
 });
 
@@ -47,5 +47,6 @@ app.post("/events", async (req, res) => {
 });
 
 app.listen(PORT_NUMBER, () => {
+  console.log('starting.....')
   console.log(`server is running on ${PORT_NUMBER}`);
 });

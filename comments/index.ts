@@ -32,7 +32,7 @@ app.post("/posts/:id/comments", async (req, res) => {
 
   commentsByPostId[postID] = comments;
 
-  await axios.post("http://localhost:4005/events", {
+  await axios.post("http://event-bus-srv:4005/events", {
     type: "COMMENT_CREATED",
     data: { id: commentId, content, postID, status: "pending" },
   });
@@ -57,7 +57,7 @@ app.post("/events", async (req, res) => {
       });
       comment!.status = status;
 
-      await axios.post("http://localhost:4005/events", {
+      await axios.post("http://event-bus-srv:4005/events", {
         type: "COMMENT_UPDATED",
         data: { id, content, postID, status },
       });

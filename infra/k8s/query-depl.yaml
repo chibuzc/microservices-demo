@@ -26,5 +26,5 @@ spec:
   ports:
     - name: query
       protocol: TCP
-      port: 4005
-      targetPort: 4005
+      port: 4002
+      targetPort: 4002

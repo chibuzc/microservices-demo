@@ -31,15 +31,15 @@ app.post("/events", async (req, res) => {
   axios.post("http://post-clusterip-srv:4000/events", event).catch((err) => {
     console.log(err.message);
   });
-  // axios.post("http://localhost:4001/events", event).catch((err) => {
-  //   console.log(err.message);
-  // });
-  // axios.post("http://localhost:4002/events", event).catch((err) => {
-  //   console.log(err.message);
-  // });
-  // axios.post("http://localhost:4003/events", event).catch((err) => {
-  //   console.log(err.message);
-  // });
+  axios.post("http://comments-srv/events", event).catch((err) => {
+    console.log(err.message);
+  });
+  axios.post("http://query-srv:4002/events", event).catch((err) => {
+    console.log(err.message);
+  });
+  axios.post("http://moderation-srv:4003/events", event).catch((err) => {
+    console.log(err.message);
+  });
 
 
 

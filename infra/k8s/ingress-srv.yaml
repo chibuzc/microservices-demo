@@ -13,7 +13,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: posts-clusterip-srv
+                name: post-clusterip-srv
                 port:
                   number: 4000
 

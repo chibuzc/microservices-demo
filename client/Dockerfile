@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:16-alpine
  
 # This line is needed by docker for react app to work
 ENV CI=true
